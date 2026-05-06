@@ -4,10 +4,12 @@ use rand::random_range;
 
 
 fn main() {
+    
 loop {
         println!("Pick: 0 = Rock, 1 = Paper, 2 = Scissors , type 'Quit' to stop playing");
-        let computer_score =0;
-        let user_score = 0;
+        let mut computer_score =0;
+        let mut user_score = 0;
+        let mut tie_score=0;
     let mut user_pick_string = String::new();
     
     io::stdin().read_line(&mut user_pick_string).expect("Please Enter A Valid Number");
@@ -24,8 +26,15 @@ loop {
     println!("User Chose : {user_choice}");
     println!("Computer Chose : {computer_choice}");
     if (computer_choice =="Rock" && user_choice=="Paper")||(computer_choice=="Paper" && user_choice=="Scissors")||(computer_choice=="Scissors" && user_choice=="Rock"){
+        user_score+=1;
         println!("{}","You Win".green() )
 
+    } else if (computer_choice=="Rock" && user_choice == "Scissors") && (computer_choice == "Paper" && user_choice =="Rock") || (computer_choice =="Scissors") && user_choice == "Paper" {
+        computer_score +=1;
+        println!("{}","You Lose!".red())
+    } else{
+        tie_score+=1;
+        println!("{}", "You Tied!".on_yellow())
     }
 
 }
