@@ -1,4 +1,5 @@
 use std::io;
+use colored::Colorize;
 use rand::random_range;
 
 
@@ -22,6 +23,10 @@ loop {
     let computer_choice = choice_picker(computer_number);
     println!("User Chose : {user_choice}");
     println!("Computer Chose : {computer_choice}");
+    if (computer_choice =="Rock" && user_choice=="Paper")||(computer_choice=="Paper" && user_choice=="Scissors")||(computer_choice=="Scissors" && user_choice=="Rock"){
+        println!("{}","You Win".green() )
+
+    }
 
 }
     
